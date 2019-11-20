@@ -1,6 +1,6 @@
 // ----- OOP ES6 -----
 {
-  class RoundPizza{
+  class RoundPizza {
     constructor(pizzaName, doughСostPerSqСm, ingredientsCosts, margin) {
       this._name = pizzaName;
       this._doughСostPerSqСm = doughСostPerSqСm;
@@ -17,7 +17,7 @@
         return this._pizzaMaxSize + ' cm';
       }
       if (size > 70 || size < this._pizzaMinSize) {
-        console.log('Unacceptable max size. The size should be between ' + this._pizzaMinSize + ' and 70 cm');
+        console.log(`Unacceptable max size. The size should be between ${this._pizzaMinSize} and 70 cm`);
       } else {
         this._pizzaMaxSize = size;
       }
@@ -29,7 +29,7 @@
       }
 
       if (size > this._pizzaMaxSize || size < 15) {
-        console.log('Unacceptable max size. The size should be between 15 and ' + this._pizzaMaxSize + ' cm');
+        console.log(`Unacceptable max size. The size should be between 15 and ${this._pizzaMaxSize} cm`);
       } else {
         this._pizzaMinSize = size;
       }
@@ -41,7 +41,7 @@
       }
 
       if (size > this._pizzaMaxSize || size < this._pizzaMinSize) {
-        console.log('Pizza has unacceptable size. The size should be between ' + this._pizzaMinSize + ' and ' + this._pizzaMaxSize + ' cm')
+        console.log(`Pizza has unacceptable size. The size should be between ${this._pizzaMinSize}  and ${this._pizzaMaxSize} cm`);
       } else {
         this._pizzaSize = size;
       }
@@ -74,9 +74,10 @@
     }
 
     showPizzaInfo() {
-      let message = 'Pizza name: ' + this._name + '\n' +
-        'Size: ' + this._pizzaSize + ' cm' + '\n' +
-        'Price: ' + this.calculatePizzaPrice().toFixed(2) + ' BYN';
+      let message = `
+Pizza name:  ${this._name}
+Size: ${this._pizzaSize} cm
+Price: ${this.calculatePizzaPrice().toFixed(2)} BYN`;
 
       console.log(message);
     }
@@ -101,7 +102,7 @@
     sause: 2,
     mozzarella: 4,
     garlicOil: 1,
-    spice: 1
+    spice: 1,
   };
 
 
@@ -112,7 +113,7 @@
     chiliPepper: 0.2,
     ham: 6,
     pepperoniPepper: 0.2,
-    spice: 0.2
+    spice: 0.2,
   };
 
   console.log('------------ OOP ES6 -----------------');

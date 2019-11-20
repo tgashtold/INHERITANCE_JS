@@ -19,7 +19,7 @@ function RoundPizza(pizzaName, doughСostPerSqСm, ingredientsCosts, margin) {
     } else {
       this._pizzaMaxSize = size;
     }
-  }
+  };
 
   this.pizzaMinSize = function (size) {
     if (!arguments.length) {
@@ -31,7 +31,7 @@ function RoundPizza(pizzaName, doughСostPerSqСm, ingredientsCosts, margin) {
     } else {
       this._pizzaMinSize = size;
     }
-  }
+  };
 
   this.pizzaSize = function (size) {
     if (!arguments.length) {
@@ -39,19 +39,19 @@ function RoundPizza(pizzaName, doughСostPerSqСm, ingredientsCosts, margin) {
     }
 
     if (size > this._pizzaMaxSize || size < this._pizzaMinSize) {
-      console.log('Pizza has unacceptable size. The size should be between ' + this._pizzaMinSize + ' and ' + this._pizzaMaxSize + ' cm')
+      console.log('Pizza has unacceptable size. The size should be between ' + this._pizzaMinSize + ' and ' + this._pizzaMaxSize + ' cm');
     } else {
       this._pizzaSize = size;
     }
-  }
+  };
 
   this._calculateDoughArea = function (size) {
     return Math.pow((size / 2), 2) * Math.PI;
-  }
+  };
 
   this._calculateDoughCosts = function () {
     return this._calculateDoughArea(this._pizzaSize) * this._doughСostPerSqСm;
-  }
+  };
 
   this._calculateIndredientsTotalCosts = function () {
     var ingrTotalCosts = 0;
@@ -61,15 +61,15 @@ function RoundPizza(pizzaName, doughСostPerSqСm, ingredientsCosts, margin) {
     }
 
     return ingrTotalCosts;
-  }
+  };
 
   this._calculateIngrCostsPerPizza = function () {
     return (this._calculateIndredientsTotalCosts() / this._calculateDoughArea(this._pizzaMaxSize)) * this._calculateDoughArea(this._pizzaSize);
-  }
+  };
 
   this.calculatePizzaPrice = function () {
     return (this._calculateDoughCosts() + this._calculateIngrCostsPerPizza()) * (1 + this._marginPersant / 100);
-  }
+  };
 
   this.showPizzaInfo = function () {
     var message = 'Pizza name: ' + this._name + '\n' +
@@ -77,7 +77,7 @@ function RoundPizza(pizzaName, doughСostPerSqСm, ingredientsCosts, margin) {
       'Price: ' + this.calculatePizzaPrice().toFixed(2) + ' BYN';
 
     console.log(message);
-  }
+  };
 }
 
 
@@ -90,7 +90,7 @@ function SquarePizza(pizzaName, doughСostPerSqСm, ingredientsCosts, margin) {
 
   this._calculateDoughArea = function (size) {
     return Math.pow(size, 2);
-  }
+  };
 
 }
 
@@ -100,7 +100,7 @@ var ingredientsForMargarita = {
   sause: 2,
   mozzarella: 4,
   garlicOil: 1,
-  spice: 1
+  spice: 1,
 };
 
 
@@ -111,7 +111,7 @@ var ingredientsForPepperoni = {
   chiliPepper: 0.2,
   ham: 6,
   pepperoniPepper: 0.2,
-  spice: 0.2
+  spice: 0.2,
 };
 
 console.log('------------ FUNCTIONAL OOP -----------------');

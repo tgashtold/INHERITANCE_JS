@@ -19,7 +19,7 @@ RoundPizza.prototype.pizzaMaxSize = function (size) {
   } else {
     this._pizzaMaxSize = size;
   }
-}
+};
 
 RoundPizza.prototype.pizzaMinSize = function (size) {
   if (!arguments.length) {
@@ -31,7 +31,7 @@ RoundPizza.prototype.pizzaMinSize = function (size) {
   } else {
     this._pizzaMinSize = size;
   }
-}
+};
 
 RoundPizza.prototype.pizzaSize = function (size) {
   if (!arguments.length) {
@@ -39,19 +39,19 @@ RoundPizza.prototype.pizzaSize = function (size) {
   }
 
   if (size > this._pizzaMaxSize || size < this._pizzaMinSize) {
-    console.log('Pizza has unacceptable size. The size should be between ' + this._pizzaMinSize + ' and ' + this._pizzaMaxSize + ' cm')
+    console.log('Pizza has unacceptable size. The size should be between ' + this._pizzaMinSize + ' and ' + this._pizzaMaxSize + ' cm');
   } else {
     this._pizzaSize = size;
   }
-}
+};
 
 RoundPizza.prototype._calculateDoughArea = function (size) {
   return Math.pow((size / 2), 2) * Math.PI;
-}
+};
 
 RoundPizza.prototype._calculateDoughCosts = function () {
   return this._calculateDoughArea(this._pizzaSize) * this._doughСostPerSqСm;
-}
+};
 
 RoundPizza.prototype._calculateIndredientsTotalCosts = function () {
   var ingrTotalCosts = 0;
@@ -65,11 +65,11 @@ RoundPizza.prototype._calculateIndredientsTotalCosts = function () {
 
 RoundPizza.prototype._calculateIngrCostsPerPizza = function () {
   return (this._calculateIndredientsTotalCosts() / this._calculateDoughArea(this._pizzaMaxSize)) * this._calculateDoughArea(this._pizzaSize);
-}
+};
 
 RoundPizza.prototype.calculatePizzaPrice = function () {
   return (this._calculateDoughCosts() + this._calculateIngrCostsPerPizza()) * (1 + this._marginPersant / 100);
-}
+};
 
 RoundPizza.prototype.showPizzaInfo = function () {
   var message = 'Pizza name: ' + this._name + '\n' +
@@ -77,7 +77,7 @@ RoundPizza.prototype.showPizzaInfo = function () {
     'Price: ' + this.calculatePizzaPrice().toFixed(2) + ' BYN';
 
   console.log(message);
-}
+};
 
 
 //CHILD CLASS
@@ -90,14 +90,25 @@ SquarePizza.prototype = Object.create(RoundPizza.prototype);
 SquarePizza.prototype.constructor = SquarePizza;
 
 
-// as an option
+// ---------- AS OPTION 1
 // SquarePizza.prototype = new RoundPizza();
+
+// ---------- AS OPTION 2
+// function inherit(Child, Parent) {
+//   var F = function () {};
+//   F.prototype = Parent.prototype;
+//   Child.prototype = new F();
+//   Child.uber = Parent.prototype;
+//   Child.prototype.constructor = Child;
+// }
+
+// inherit(SquarePizza, RoundPizza);
 
 //REDEFINING THE METHOD
 
 SquarePizza.prototype._calculateDoughArea = function (size) {
   return Math.pow(size, 2);
-}
+};
 
 
 //SAMPLES
@@ -106,7 +117,7 @@ var ingredientsForMargarita = {
   sause: 2,
   mozzarella: 4,
   garlicOil: 1,
-  spice: 1
+  spice: 1,
 };
 
 
@@ -117,7 +128,7 @@ var ingredientsForPepperoni = {
   chiliPepper: 0.2,
   ham: 6,
   pepperoniPepper: 0.2,
-  spice: 0.2
+  spice: 0.2,
 };
 
 console.log('------------- PROTOTYPE OOP -----------------');
