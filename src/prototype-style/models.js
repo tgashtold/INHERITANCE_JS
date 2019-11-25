@@ -3,41 +3,16 @@
 function Pizza(pizzaName, ingredientsObj) {
     this._name = pizzaName;
     this.ingredients = ingredientsObj;
-    this._pizzaMaxSize = config.defaultPizzaMaxSize;
-    this._pizzaMinSize = config.defaultPizzaMinSize;
-    this._pizzaSize = this._pizzaMinSize;
+    this._pizzaSize = config.defaultPizzaMinSize;
 }
-
-Pizza.prototype.pizzaMaxSize = function (size) {
-    if (!arguments.length) {
-        return this._pizzaMaxSize;
-    }
-    if (size > config.defaultPizzaMaxSize || size < this._pizzaMinSize) {
-        throw new Error('Unacceptable max size. The size should be between ' + this._pizzaMinSize + ' and ' + config.defaultPizzaMaxSize + ' cm');
-    } else {
-        this._pizzaMaxSize = size;
-    }
-};
-
-Pizza.prototype.pizzaMinSize = function (size) {
-    if (!arguments.length) {
-        return this._pizzaMinSize;
-    }
-
-    if (size > this._pizzaMaxSize || size < config.defaultPizzaMinSize) {
-        throw new Error('Unacceptable max size. The size should be between ' + config.defaultPizzaMinSize + ' and ' + this._pizzaMaxSize + ' cm');
-    } else {
-        this._pizzaMinSize = size;
-    }
-};
 
 Pizza.prototype.pizzaSize = function (size) {
     if (!arguments.length) {
         return this._pizzaSize;
     }
 
-    if (size > this._pizzaMaxSize || size < this._pizzaMinSize) {
-        throw new Error('Pizza has unacceptable size. The size should be between ' + this._pizzaMinSize + ' and ' + this._pizzaMaxSize + ' cm');
+    if (size > config.defaultPizzaMaxSize || size < config.defaultPizzaMinSize) {
+        throw new Error('Pizza has unacceptable size. The size should be between ' + config.defaultPizzaMinSize + ' and ' + config.defaultPizzaMaxSize + ' cm');
     } else {
         this._pizzaSize = size;
     }

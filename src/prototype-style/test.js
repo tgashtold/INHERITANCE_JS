@@ -7,56 +7,59 @@ var mozzarella = new Ingredient('mozzarella', 0.2);
 
 console.log('***** ingredients testing');
 
-var ingredientsForCaprichosa = new Ingredients(mozzarella, new Ingredient('ham', 0.3), new Ingredient('mushrooms', 0.25), new Ingredient('tomato sauce', 0.05), new Ingredient('tomatoes', 0.15));
-var ingredientsForPepperoni = new Ingredients(new Ingredient('mozzarella', 0.3), new Ingredient('pepperoni', 0.35), new Ingredient('tomato sauce', 0.1));
+var ingredientsForCaprichosa20Cm = new Ingredients(mozzarella, new Ingredient('ham', 0.3), new Ingredient('mushrooms', 0.25), new Ingredient('tomato sauce', 0.05),
+  new Ingredient('tomatoes', 0.15));
+var ingredientsForPepperoni45Cm = new Ingredients(new Ingredient('mozzarella', 0.3), new Ingredient('pepperoni', 0.25), new Ingredient('tomato sauce', 0.15));
+var ingredientsForPepperoni32Cm = new Ingredients(new Ingredient('mozzarella', 0.26), new Ingredient('pepperoni', 0.21), new Ingredient('tomato sauce', 0.12));
 
-consolePrinter.print(ingredientsForCaprichosa);
+consolePrinter.print(ingredientsForCaprichosa20Cm);
 
 console.log('***** delete mozzarella');
-ingredientsForCaprichosa.deleteIngredient(mozzarella);
-consolePrinter.print(ingredientsForCaprichosa);
+ingredientsForCaprichosa20Cm.deleteIngredient(mozzarella);
+consolePrinter.print(ingredientsForCaprichosa20Cm);
 
 console.log('***** add mozzarella');
-ingredientsForCaprichosa.addIngredient(mozzarella);
-consolePrinter.print(ingredientsForCaprichosa);
+ingredientsForCaprichosa20Cm.addIngredient(mozzarella);
+consolePrinter.print(ingredientsForCaprichosa20Cm);
 
 console.log('***** add mozzarella again - Error');
-// ingredientsForCaprichosa.addIngredient(mozzarella);
+// ingredientsForCaprichosa20Cm.addIngredient(mozzarella);
 
 console.log('***** pizza factory and pizza manager testing');
 
 var pizzaFactory = new PizzaFactory();
 var pizzaManager = new PizzaManager();
 
-var caprichosaSquare = pizzaFactory.getNewPizza('square', 'Caprichosa Square', ingredientsForCaprichosa);
-var caprichosaRound = pizzaFactory.getNewPizza('ROUND', 'Caprichosa Round', ingredientsForCaprichosa);
+var caprichosa20CmSquare = pizzaFactory.getNewPizza('square', 'Caprichosa Square 20', ingredientsForCaprichosa20Cm);
+caprichosa20CmSquare.pizzaSize(20);
+var caprichosa20CmRound = pizzaFactory.getNewPizza('ROUND', 'Caprichosa Round 20', ingredientsForCaprichosa20Cm);
+caprichosa20CmRound.pizzaSize(20);
+var pepperoni45CmSquare = pizzaFactory.getNewPizza('Square', 'Pepperoni Square 45', ingredientsForPepperoni45Cm);
+pepperoni45CmSquare.pizzaSize(45);
+var pepperoni45CmRound = pizzaFactory.getNewPizza('roUnd', 'Pepperoni Round 45', ingredientsForPepperoni45Cm);
+pepperoni45CmRound.pizzaSize(45);
+var pepperoni32CmRound = pizzaFactory.getNewPizza('roUnd', 'Pepperoni Round 32', ingredientsForPepperoni32Cm);
+pepperoni32CmRound.pizzaSize(32);
 
-var pepperoniSquare = pizzaFactory.getNewPizza('Square', 'Pepperoni Square', ingredientsForPepperoni);
-var pepperoniRound = pizzaFactory.getNewPizza('roUnd', 'Pepperoni Round', ingredientsForPepperoni);
+consolePrinter.print(caprichosa20CmSquare);
+console.log('Price: ' + pizzaManager.calculatePizzaPrice(caprichosa20CmSquare));
+consolePrinter.print(caprichosa20CmRound);
+console.log('Price: ' + pizzaManager.calculatePizzaPrice(caprichosa20CmRound));
+consolePrinter.print(pepperoni45CmSquare);
+console.log('Price: ' + pizzaManager.calculatePizzaPrice(pepperoni45CmSquare));
+consolePrinter.print(pepperoni45CmRound);
+console.log('Price: ' + pizzaManager.calculatePizzaPrice(pepperoni45CmRound));
+consolePrinter.print(pepperoni32CmRound);
+console.log('Price: ' + pizzaManager.calculatePizzaPrice(pepperoni32CmRound));
 
-
-consolePrinter.print(caprichosaSquare);
-console.log('Price: ' + pizzaManager.calculatePizzaPrice(caprichosaSquare));
-consolePrinter.print(caprichosaRound);
-console.log('Price: ' + pizzaManager.calculatePizzaPrice(caprichosaRound));
-consolePrinter.print(pepperoniSquare);
-console.log('Price: ' + pizzaManager.calculatePizzaPrice(pepperoniSquare));
-consolePrinter.print(pepperoniRound);
-console.log('Price: ' + pizzaManager.calculatePizzaPrice(pepperoniRound));
-
-console.log('***** delete ingredient + change size');
-ingredientsForPepperoni.deleteIngredient(mozzarella);
-pepperoniRound.pizzaSize(45);
-consolePrinter.print(pepperoniRound);
-console.log('Price: ' + pizzaManager.calculatePizzaPrice(caprichosaRound));
-
-console.log('***** + change margin to 50%');
-console.log('Price: ' + pizzaManager.calculatePizzaPrice(caprichosaRound, 50));
+console.log('***** change margin to 50% for Pepperoni Round 32 cm');
+console.log('Price: ' + pizzaManager.calculatePizzaPrice(pepperoni32CmRound, 50));
 
 console.log('***** set unacceptable pizza size - error');
-// pepperoniRound.pizzaSize(80);
+// pepperoni45CmRound.pizzaSize(80);
 
-domPrinter.print(caprichosaSquare);
-domPrinter.print(caprichosaRound);
-domPrinter.print(pepperoniSquare);
-domPrinter.print(pepperoniRound);
+domPrinter.print(caprichosa20CmSquare);
+domPrinter.print(caprichosa20CmRound);
+domPrinter.print(pepperoni45CmSquare);
+domPrinter.print(pepperoni45CmRound);
+domPrinter.print(pepperoni32CmRound);

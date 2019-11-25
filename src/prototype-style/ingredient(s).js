@@ -1,26 +1,9 @@
 // CLASS OF INGREDIENT
 
-function Ingredient(ingredientName, quantityForMaxSizePizza) {
+function Ingredient(ingredientName, quantity) {
     this.name = ingredientName;
-    this.quantity = quantityForMaxSizePizza;
-    this.price = this._getPrice();
+    this.quantity = quantity;
 }
-
-Ingredient.prototype._getPrice = function () {
-    var ingredientPrice = config.ingredientsPrice[this.name];
-
-    if (!ingredientPrice) {
-        throw Error('Please use ingredient name that is used in database or add the price of the ingredient in the database');
-    }
-
-    return ingredientPrice;
-};
-
-Ingredient.prototype.getCost = function () {
-    var ingredientCost = this.quantity * this.price;
-
-    return ingredientCost;
-};
 
 
 //CLASS OF INGREDIENTS
@@ -33,7 +16,7 @@ Ingredients.prototype.getIngredients = function () {
     var ingredientsObj = {};
 
     this.ingredients.forEach(function (value) {
-        ingredientsObj[value.name] = value.getCost();
+        ingredientsObj[value.name] = value.quantity;
 
         return ingredientsObj;
     });

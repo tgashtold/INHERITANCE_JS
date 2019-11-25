@@ -13,14 +13,16 @@ PizzaManager.prototype._calculateIndredientsTotalCosts = function () {
     var ingredientsList = this._pizza.ingredients.getIngredients();
 
     for (var key in ingredientsList) {
-        ingrTotalCosts += ingredientsList[key];
+        var ingredientPrice = config.ingredientsPrice[key];
+
+        if (ingredientPrice) {
+            ingrTotalCosts += ingredientsList[key] * ingredientPrice;
+        } else {
+            throw Error('Please use ingredient name that presents in database or add the price of the ingredient in the database');
+        }
     }
 
     return ingrTotalCosts;
-};
-
-PizzaManager.prototype._calculateIngrCostsPerPizza = function () {
-    return (this._calculateIndredientsTotalCosts() / this._pizza.calculatePizzaArea(this._pizza.pizzaMaxSize())) * this._pizza.calculatePizzaArea(this._pizza.pizzaSize());
 };
 
 PizzaManager.prototype.calculatePizzaPrice = function (pizza, margin) {
@@ -30,7 +32,7 @@ PizzaManager.prototype.calculatePizzaPrice = function (pizza, margin) {
 
     this._margin = isFiniteNumber ? margin : this._margin;
 
-    var pizzaPrice = (this._calculateIngrCostsPerPizza() + this._calculateDoughCosts()) * (1 + this._margin / 100);
+    var pizzaPrice = (this._calculateIndredientsTotalCosts() + this._calculateDoughCosts()) * (1 + this._margin / 100);
 
     return +pizzaPrice.toFixed(2);
 };
