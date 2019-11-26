@@ -8,7 +8,7 @@ function Ingredient(ingredientName, quantity) {
 
 //CLASS OF INGREDIENTS
 
-function Ingredients(ingredients) {
+function Ingredients( /* args*/ ) {
     this.ingredients = Array.from(arguments);
 }
 
@@ -29,13 +29,15 @@ Ingredients.prototype.addIngredient = function (ingredientToAdd) {
         throw new Error('The method accepts objects of Ingredient class or inherited from it');
     }
 
-    if (this.ingredients.find(function (value) {
-            return value.name === ingredientToAdd.name;
-        })) {
-        throw new Error('Ingredients already contain the ingredient with such name');
-    }
+    var sameIngridientInIngridients = this.ingredients.find(function (value) {
+        return value.name === ingredientToAdd.name;
+    });
 
-    this.ingredients.push(ingredientToAdd);
+    if (sameIngridientInIngridients) {
+        sameIngridientInIngridients.quantity = ingredientToAdd.quantity;
+    } else {
+        this.ingredients.push(ingredientToAdd);
+    }
 };
 
 Ingredients.prototype.deleteIngredient = function (ingredientToDelete) {
@@ -49,8 +51,17 @@ Ingredients.prototype.deleteIngredient = function (ingredientToDelete) {
 };
 
 Ingredients.prototype.toString = function () {
+
     var message = 'Ingredients: ' + this.ingredients.map(function (value) {
-        return value.name;
+        if (value.name.match(/[A-Z]/g)) {
+            var ingrName = value.name;
+
+            ingrName.match(/[A-Z]/g).forEach(value => ingrName = ingrName.replace(value, ` ${value.toLowerCase()}`));
+
+            return ingrName;
+        } else {
+            return value.name;
+        };
     }).join(', ');
 
     return message;

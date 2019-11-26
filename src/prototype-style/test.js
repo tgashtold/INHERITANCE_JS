@@ -7,10 +7,10 @@ var mozzarella = new Ingredient('mozzarella', 0.2);
 
 console.log('***** ingredients testing');
 
-var ingredientsForCaprichosa20Cm = new Ingredients(mozzarella, new Ingredient('ham', 0.3), new Ingredient('mushrooms', 0.25), new Ingredient('tomato sauce', 0.05),
+var ingredientsForCaprichosa20Cm = new Ingredients(mozzarella, new Ingredient('ham', 0.3), new Ingredient('mushrooms', 0.25), new Ingredient('tomatoSauce', 0.05),
   new Ingredient('tomatoes', 0.15));
-var ingredientsForPepperoni45Cm = new Ingredients(new Ingredient('mozzarella', 0.3), new Ingredient('pepperoni', 0.25), new Ingredient('tomato sauce', 0.15));
-var ingredientsForPepperoni32Cm = new Ingredients(new Ingredient('mozzarella', 0.26), new Ingredient('pepperoni', 0.21), new Ingredient('tomato sauce', 0.12));
+var ingredientsForPepperoni45Cm = new Ingredients(new Ingredient('mozzarella', 0.3), new Ingredient('pepperoni', 0.25), new Ingredient('tomatoSauce', 0.15));
+var ingredientsForPepperoni32Cm = new Ingredients(new Ingredient('mozzarella', 0.26), new Ingredient('pepperoni', 0.21), new Ingredient('tomatoSauce', 0.12));
 
 consolePrinter.print(ingredientsForCaprichosa20Cm);
 
@@ -63,3 +63,4 @@ domPrinter.print(caprichosa20CmRound);
 domPrinter.print(pepperoni45CmSquare);
 domPrinter.print(pepperoni45CmRound);
 domPrinter.print(pepperoni32CmRound);
+

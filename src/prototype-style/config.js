@@ -4,7 +4,7 @@ var config = {
     doughСostPerSqСm: 0.01,
     defaultMargin: 30,
     ingredientsPrice: {
-        'tomato sauce': 1.8,
+        tomatoSauce: 1.8,
         ham: 4,
         mushrooms: 2.4,
         mozzarella: 2.5,

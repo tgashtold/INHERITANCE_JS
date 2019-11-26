@@ -1,9 +1,9 @@
 //CLASS OF PIZZA
 
-function Pizza(pizzaName, ingredientsObj) {
+function Pizza(pizzaName, ingredientsObj, size) {
     this._name = pizzaName;
     this.ingredients = ingredientsObj;
-    this._pizzaSize = config.defaultPizzaMinSize;
+    this._pizzaSize = size || config.defaultPizzaMinSize;
 }
 
 Pizza.prototype.pizzaSize = function (size) {
@@ -29,7 +29,7 @@ Pizza.prototype.toString = function () {
 
 // CLASS OF SQUARE PIZZA
 
-function SquarePizza(pizzaName, ingredientsObj) {
+function SquarePizza(/* args*/) {
     Pizza.apply(this, arguments);
 }
 
@@ -59,7 +59,7 @@ SquarePizza.prototype.calculatePizzaArea = function (size) {
 
 // CLASS OF ROUND PIZZA
 
-function RoundPizza(pizzaName, ingredientsObj) {
+function RoundPizza(/* args*/) {
     Pizza.apply(this, arguments);
 }
 
